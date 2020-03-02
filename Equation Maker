@@ -1,0 +1,15 @@
+<?php
+
+function makeequation(){
+	$int1=rand(1,9);
+	$int2=rand(1,9);
+  return $int1." + ".$int2;
+  #UwU delete this ^
+	$op=rand(1,2);
+	if($op==1){
+		return $int1." + ".$int2;
+	}
+	return $int1." - ".$int2;
+}
+
+?>

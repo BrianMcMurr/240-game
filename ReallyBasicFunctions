@@ -1,3 +1,5 @@
+<?php
+
 function generateAddition(){
 	$a = rand(0,10);
 	$b = rand(0,10)
@@ -13,3 +15,5 @@ function checkAnswer($input, $problem){
 	if ($answer == $input) return true;
 	else return false;
 }
+
+?>

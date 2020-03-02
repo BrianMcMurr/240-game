@@ -2,6 +2,6 @@
 
 # 240-game
 
-echo "test";
+echo "test 123
 
 ?>

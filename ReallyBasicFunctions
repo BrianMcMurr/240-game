@@ -1,0 +1,15 @@
+function generateAddition(){
+	$a = rand(0,10);
+	$b = rand(0,10)
+	return "$a+$b";
+}
+
+function checkAnswer($input, $problem){
+	//extract problem from string
+	$loc = strripos($problem,'+');
+	$a = substr($problem,0,$loc);
+	$b = substr($problem,$loc);
+	$answer = $a + $b;
+	if ($answer == $input) return true;
+	else return false;
+}

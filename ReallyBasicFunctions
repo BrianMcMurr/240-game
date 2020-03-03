@@ -1,5 +1,13 @@
 <?php
 
+$NUMCORRECT = 0
+$NUMWRONG = 0;
+
+tally($result){
+	if ($result) then $NUMCORRECT++;
+	else $NUMWRONG++;
+}
+
 function generateAddition(){
 	$a = rand(0,10);
 	$b = rand(0,10)

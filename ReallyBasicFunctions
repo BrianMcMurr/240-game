@@ -12,7 +12,7 @@ function checkAnswer($input, $problem){
 	$a = substr($problem,0,$loc);
 	$b = substr($problem,$loc);
 	$answer = $a + $b;
-	if ($answer == $input) return true;
+	if ($answer == $input) then return true;
 	else return false;
 }
 

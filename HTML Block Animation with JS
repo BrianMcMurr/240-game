@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BLOCKS!</title>
+	<style>
+  		body {
+    		margin: 0;
+   			overflow: hidden;
+  		}
+	</style>
+</head>
+<body>
+	<canvas class = "myCanvas">
+		<script>
+			const canvas = document.querySelector('.myCanvas');
+			const width = canvas.width = window.innerWidth;
+			const height = canvas.height = window.innerHeight;
+			const image = canvas.getContext('2d');
+			const fps = 60;
+			const gap = 1/fps;
+			const speed = 20;
+			const moveDist = gap * speed;
+			var go;
+			image.fillStyle = 'rgb(20,20,20)';
+			//image.fillRect(0,0,2000,2000);
+			var	blocks = new Array();
+			var background = new Block();
+			b1 = new Block(0, "red");
+			b2 = new Block(300, "blue");
+			b3 = new Block(600, "green");
+			blocks.push(b1);
+			blocks.push(b2);
+			blocks.push(b3);
+			start();
+
+			function start(){
+				go = setInterval(redraw, gap);
+			}
+
+			function stop(){
+				clearInterval(go);
+			}
+
+			function redraw(){
+
+				image.clearRect(0, 0, canvas.width, canvas.height);
+				//image.fillStyle = 'rgb(0,0,0)';
+				//image.fillRect(0, 0, canvas.width, canvas.height);
+				num = parseInt(Math.random() * 1351, 10);
+				if(num % 200 === 0){
+					blocks.push(new Block(num, "random"));
+				}
+				for(i = 0; i < blocks.length; i++){
+					block = blocks[i];
+					block.draw();
+					if(block.getY() > 1000){
+						blocks.shift();
+						console.log(blocks.length);
+					}
+				}
+			}
+			function Block(ex, color){
+				var width = 200;
+				var height = 200;
+				var x = ex;
+				var y = 0;
+				var r;
+				var g;
+				var b;
+				if(color === "red"){
+					r = 255;
+					g = b =0;
+				} else if (color === "green"){
+					b = r = 0;
+					g = 255;
+				}
+				else if(color === "blue"){
+					r = g = 0;
+					b = 255;
+				} else {
+					r = parseInt(Math.random()*256, 10);
+					g = parseInt(Math.random()*256, 10);
+					b = parseInt(Math.random()*256, 10);
+
+				}
+				this.move = function(){
+					y = y + moveDist;
+				}
+				this.getColor = function(){
+					return 'rgb(' + r + ',' + g + ',' + b + ')';
+				}
+				this.draw = function(){
+					image.fillStyle = block.getColor();
+					image.fillRect(x, y, width, height);
+					this.move();
+
+				}
+				this.getY = function(){
+					return y;
+				}
+			}
+		</script>
+	</canvas>
+
+</body>
+</html>

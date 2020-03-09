@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+
+<audio src="EpicerSong.m4a" autoplay="true">
+<div style="border: 1px solid black ; padding: 1px ;">
+Sorry, your browser does not support the <audio> tag used in this demo.
+</div>
+</audio>
 <head>
 	<title>BLOCKS!</title>
 	<style>

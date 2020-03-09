@@ -1,0 +1,19 @@
+body {
+    background-color: rgb(255, 255, 255);
+  }
+
+div {
+    height: 500px;
+    width: 50%;
+  }
+
+  h1 {
+    color: #700000;
+    font-family: Comic, arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 4px;
+    margin-bottom: 1px;
+    text-align:center;
+    }
+ 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p>
+		This is the paragraph<em> an inline element</em> within it.</p>
+		<div class="move-me move-me-1"> block1</div>
+		<br>
+		<div class="move-me move-me-2"> block2 </div>
+		<br>
+		<div class="move-me move-me-3"> block3 </div>
+<style>
+	.move-me {
+  display: inline-block;
+  padding: 20px;
+  color: white;
+  position: relative;
+  margin: 0 0 10px 0;
+}
+.move-me-3 {
+  animation: move-in-steps 8s infinite;
+}
+.move-me-2{
+	animation: move-in-steps 10s infinite;
+}
+.move-me-1{
+	animation: move-in-steps 12s infinite;
+}
+
+body {
+  padding: 20px;
+}
+
+@keyframes move-in-steps {
+  0% {
+    left: 0;
+    background: blue;
+  }
+  100% {
+    left: 100%;
+    background: red;
+  }
+}
+	.square {
+		height: 50px;
+		width: 50px;
+		background-color: #555;
+	}
+body {
+	animation: color-me-in 50s infinite;
+}
+@keyframes color-me-in {
+	0% {
+		background: orange;
+	}
+	50%{
+		background: blue;
+	}
+	100%{ 
+		background: black;
+	}
+}
+</style>
+<div class="square"></div>
+</body>
+	</html>

@@ -17,6 +17,8 @@
 	}
 	$str.= "\n".$username." ".$password." ".$class;
 	update_file(USERFILE,$str);
+	header('Location: '.Login.'.'.php);
+
 
 
 

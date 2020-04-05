@@ -1,28 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-	h1 {
-		font-size: 40px;
-	}
-	div {
-		width: 100px;
-		height: 100px;
-		background: red;
-		position: relative;
-		animation: mymove 2s infinite alternate;
-		animation-timing-function: linear;
-		line-height:2;
-		text-align: center;
-		font-size: 50px;
-	}
-	@keyframes mymove{
-		0% {top: 0px; left: 0px;}
-		100%{top: 50px; left: 500px;}
-	}
-</style>
+	<link rel="stylesheet" type="text/css" href="gameBackground.css">
+	<link rel="stylesheet" type="text/css" href="fallingBlocks.css">
+	<div class="gameBackground"></div>
+<!--	<div class="divGameBackground"></div> -->
 </head>
 <body>
-	<div>h1</div>
+	<script src="randomEquation.js"></script>
+<!--
+	<div id = "firstFallOption" class = "fallingBlocks" style = "animation-name: blockFall1"></div>
+	<div id = "secondFallOption" class = "fallingBlocks" style="animation-name: blockFall2"></div>
+	<div id = "thirdFallOption" class = "fallingBlocks" style = "animation-name: blockFall3"></div>
+-->
+	<script type="text/javascript">
+		
+		//var equation = generateAddition();
+		var go; //this variable will hold the interval for blockCannon. Initialized in start(gap).
+		var counter = 0;
+		var blocklist = new Array(); //whats 9 + 10?
+		//document.getElementById("firstFallOption").innerHTML = equation;
+		start(1000);
+		//start shooting blocks every gap millis
+		function start(gap){
+			go = setInterval(blockCannon, gap);
+		}
+
+		//stop shooting blocks every gap millis
+		function stop(){
+			clearInterval(go);
+		}
+
+		//Shoot blocks with random equations in random collumns/files.
+		function blockCannon() {
+			++counter;
+			console.log(counter);
+			var rand = parseInt(Math.random() * 3, 10) + 1; //create a random number between 0 and 2
+			switch(rand){
+				case 1 : case1Block(); 
+				break;
+				case 2 : case2Block();
+				 break;
+				default : case3Block(); 
+				break;
+			}
+		}
+		function case1Block() {
+			var block = document.createElement('div');
+			block.setAttribute("class", "fallingBlocks");
+			block.setAttribute("style","animation-name: blockFall1");
+			document.body.appendChild(block);
+		}
+
+		function case2Block() {
+			var block = document.createElement('div');
+			block.setAttribute("class", "fallingBlocks");
+			block.setAttribute("style","animation-name: blockFall2");
+			document.body.appendChild(block);
+		}	
+			
+		function case3Block() {
+			var block = document.createElement('div');
+			block.setAttribute("class", "fallingBlocks");
+			block.setAttribute("style","animation-name: blockFall3");
+			document.body.appendChild(block);
+		}
+			
+	</script>
+	<!--	<label for="Answer: "> Username</label>-->
+	<textarea id = "userGuess" cols="40" rows="5" onkeypress="process(event)"></textarea>
+<script type="text/javascript">
+	function process(e) {
+			if (e.keyCode == 13) {
+				alert(document.getElementById("userGuess").value)
+				alert(generateAddition())
+			} 
+	}
+</script>
+	<!--<div>h1</div> -->
 </body>
 	</html>

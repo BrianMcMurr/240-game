@@ -1,0 +1,30 @@
+	.fallingBlocks {
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		background-color: red;
+		text-align: center;
+		animation-name: normalFall;/* this line was changed it now works with new animation options */
+		animation-duration: 4s;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
+	}
+	@keyframes normalFall{
+		0% {left: -100px;}
+		100%{left: -100px;}
+	}
+	@keyframes blockFall1 {
+		0% {left: 20px; top: 100px;}
+		99% {left: 20px; top: 700px;background-color: red}
+		100%{left: 20px; top: 700px; background-color: green}
+	}
+	@keyframes blockFall2 {
+		0% {left: 120px; top: 100px;}
+		99% {left: 120px; top: 750px; opacity: 1;}
+		100%{left: -100px; top: -100px; opacity: 0;}
+	}
+	@keyframes blockFall3 {
+		0% {left: 220px; top: 100px;}
+		99% {left: 220px; top: 750px;}
+		100%{left: -100px; top: -100px;}
+	}

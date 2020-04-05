@@ -18,7 +18,7 @@ Sorry, your browser does not support the <audio> tag used in this demo.
 <body>
 
 	<canvas class = "myCanvas">
-		<script>
+		<script>0
 			/**
 				This code makes random colored blocks fall from the sky. It was writen by me, Alex Meislich, on 3/5/20 (the day will live in infamy).
 				Feel free to edit it and play around with the JavaScript (or JS). 

@@ -36,33 +36,44 @@
 			++counter;
 			console.log(counter);
 			var rand = parseInt(Math.random() * 3, 10) + 1; //create a random number between 0 and 2
+			var currentBlockId = "block" + counter;
+			var randomEquation = generateAddition();
 			switch(rand){
-				case 1 : case1Block(); 
+				case 1 : case1Block(currentBlockId, randomEquation);
 				break;
-				case 2 : case2Block();
-				 break;
-				default : case3Block(); 
+				case 2 : case2Block(currentBlockId, randomEquation);
+				break;
+				default : case3Block(currentBlockId, randomEquation); 
 				break;
 			}
+			var newBlock = {id: currentBlockId, equation: randomEquation};
+			blocklist.push(newBlock);
+
 		}
-		function case1Block() {
+		function case1Block(newBlockId, equation) {
 			var block = document.createElement('div');
+			block.setAttribute("id",newBlockId);
 			block.setAttribute("class", "fallingBlocks");
 			block.setAttribute("style","animation-name: blockFall1");
+			block.innerHTML = equation;
 			document.body.appendChild(block);
 		}
 
-		function case2Block() {
+		function case2Block(newBlockId, equation) {
 			var block = document.createElement('div');
+			block.setAttribute("id",newBlockId);
 			block.setAttribute("class", "fallingBlocks");
 			block.setAttribute("style","animation-name: blockFall2");
+			block.innerHTML = equation;
 			document.body.appendChild(block);
 		}	
 			
-		function case3Block() {
+		function case3Block(newBlockId, equation) {
 			var block = document.createElement('div');
+			block.setAttribute("id",newBlockId);
 			block.setAttribute("class", "fallingBlocks");
 			block.setAttribute("style","animation-name: blockFall3");
+			block.innerHTML = equation;
 			document.body.appendChild(block);
 		}
 			

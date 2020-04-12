@@ -18,11 +18,15 @@
 		//var equation = generateAddition();
 		var go; //this variable will hold the interval for blockCannon. Initialized in start(gap).
 		var counter = 0;
-		var blocklist = new Array(); //whats 9 + 10?
+		var blockList = new Array(); //whats 9 + 10?
 		//document.getElementById("firstFallOption").innerHTML = equation;
 		start(1000);
+
+
+
 		//start shooting blocks every gap millis
 		function start(gap){
+			//The function setInterval calls the method blockCannon every gam milliseconds
 			go = setInterval(blockCannon, gap);
 		}
 
@@ -34,49 +38,39 @@
 		//Shoot blocks with random equations in random collumns/files.
 		function blockCannon() {
 			++counter;
-			console.log(counter);
-			var rand = parseInt(Math.random() * 3, 10) + 1; //create a random number between 0 and 2
+			console.log(counter);	
 			var currentBlockId = "block" + counter;
 			var randomEquation = generateAddition();
-			switch(rand){
-				case 1 : case1Block(currentBlockId, randomEquation);
-				break;
-				case 2 : case2Block(currentBlockId, randomEquation);
-				break;
-				default : case3Block(currentBlockId, randomEquation); 
-				break;
-			}
+			makeBlock(currentBlockId,randomEquation);
 			var newBlock = {id: currentBlockId, equation: randomEquation};
-			blocklist.push(newBlock);
+			blockList.push(newBlock);
+	//		checkfinishedBlocks();
+		}
+		
+		function makeBlock(newBlockId, equation) {
+			var rand = parseInt(Math.random() * 3, 10) + 1; //create a random number between 1 and 3 inclusive
+			var block = document.createElement('div');
+			block.setAttribute("id",newBlockId);
+			block.setAttribute("class", "fallingBlocks");
+			switch(rand){
+			case (1) : block.setAttribute("style","animation-name: blockFall1"); break;
+			case (2) : block.setAttribute("style","animation-name: blockFall2"); break;
+			default : block.setAttribute("style","animation-name: blockFall3"); break;
+			}
+			block.innerHTML = equation;
+			document.body.appendChild(block);
+			setTimeout(newBlockId.parentNode.removeChild(newBlockId), block.getAttribute("animation-duration"));
+		}
 
+/*		function checkfinishedBlocks() {
+			blockList.forEach(finishedBlock);
 		}
-		function case1Block(newBlockId, equation) {
-			var block = document.createElement('div');
-			block.setAttribute("id",newBlockId);
-			block.setAttribute("class", "fallingBlocks");
-			block.setAttribute("style","animation-name: blockFall1");
-			block.innerHTML = equation;
-			document.body.appendChild(block);
-		}
-
-		function case2Block(newBlockId, equation) {
-			var block = document.createElement('div');
-			block.setAttribute("id",newBlockId);
-			block.setAttribute("class", "fallingBlocks");
-			block.setAttribute("style","animation-name: blockFall2");
-			block.innerHTML = equation;
-			document.body.appendChild(block);
-		}	
-			
-		function case3Block(newBlockId, equation) {
-			var block = document.createElement('div');
-			block.setAttribute("id",newBlockId);
-			block.setAttribute("class", "fallingBlocks");
-			block.setAttribute("style","animation-name: blockFall3");
-			block.innerHTML = equation;
-			document.body.appendChild(block);
-		}
-			
+		function finishedBlock(aBlock) {
+			var checkId = aBlock.id;
+			if(document.getElementById(checkId).getAttribute("left") == "-100px") {
+				document.getElementById(checkId).remove();
+			}
+			*/
 	</script>
 	<!--	<label for="Answer: "> Username</label>-->
 	<textarea id = "userGuess" cols="40" rows="5" onkeypress="process(event)"></textarea>

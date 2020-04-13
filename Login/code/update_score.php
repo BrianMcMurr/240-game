@@ -27,6 +27,7 @@ function checkScore($name, $score){
 			}
 		}
 	}
+	header("Location: menu.php/");
 }
 function updateScore($name, $score, $users){
 	$str="";

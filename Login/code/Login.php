@@ -5,7 +5,7 @@
 <body>
 	<form action="check_login.php" method="post" id="form_id">
 		<h2>Welcome to Math Game</h2>
-		Username:
+		Userame:
 		<input type="text" name="username" id="username" placeholder="Name" />
 		<br/><br/>
 		Password:

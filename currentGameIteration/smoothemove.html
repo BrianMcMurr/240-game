@@ -19,8 +19,9 @@
 		var go; //this variable will hold the interval for blockCannon. Initialized in start(gap).
 		var counter = 0;
 		var blockList = new Array(); //whats 9 + 10?
+		var blockFrequency = 1000;
 		//document.getElementById("firstFallOption").innerHTML = equation;
-		start(1000);
+		start(blockFrequency);
 
 
 
@@ -50,6 +51,7 @@
 		function makeBlock(newBlockId, equation) {
 			var rand = parseInt(Math.random() * 3, 10) + 1; //create a random number between 1 and 3 inclusive
 			var block = document.createElement('div');
+			block.addEventListener("webkitAnimationEnd", animationEndListener);
 			block.setAttribute("id",newBlockId);
 			block.setAttribute("class", "fallingBlocks");
 			switch(rand){
@@ -59,7 +61,15 @@
 			}
 			block.innerHTML = equation;
 			document.body.appendChild(block);
-			setTimeout(newBlockId.parentNode.removeChild(newBlockId), block.getAttribute("animation-duration"));
+//			setTimeout(removeElement(block), 4000);
+		}
+/*
+		function removeElement(elem){
+			elem.parentNode.removeChild(elem);
+		}
+		*/
+		function animationEndListener(e) {
+			e.target.remove();
 		}
 
 /*		function checkfinishedBlocks() {

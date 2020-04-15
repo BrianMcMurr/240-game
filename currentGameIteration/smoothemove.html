@@ -45,6 +45,7 @@
 			makeBlock(currentBlockId,randomEquation);
 			var newBlock = {id: currentBlockId, equation: randomEquation};
 			blockList.push(newBlock);
+			console.log(JSON.stringify(blockList));
 	//		checkfinishedBlocks();
 		}
 		
@@ -59,37 +60,69 @@
 			case (2) : block.setAttribute("style","animation-name: blockFall2"); break;
 			default : block.setAttribute("style","animation-name: blockFall3"); break;
 			}
-			block.innerHTML = equation;
 			document.body.appendChild(block);
-//			setTimeout(removeElement(block), 4000);
-		}
-/*
-		function removeElement(elem){
-			elem.parentNode.removeChild(elem);
-		}
-		*/
-		function animationEndListener(e) {
-			e.target.remove();
+			block.innerHTML = equation;
+
 		}
 
-/*		function checkfinishedBlocks() {
-			blockList.forEach(finishedBlock);
-		}
-		function finishedBlock(aBlock) {
-			var checkId = aBlock.id;
-			if(document.getElementById(checkId).getAttribute("left") == "-100px") {
-				document.getElementById(checkId).remove();
+		function animationEndListener(e) {
+			removeBlockId = e.target.getAttribute("id");
+			for(i = 0; i < blockList.length; i++) {
+				if(removeBlockId == blockList[i].id){
+					blockList.splice(i,1);
+				}
 			}
-			*/
+			e.target.remove();
+			console.log("Block id: " + removeBlockId);
+		}
+
+
 	</script>
 	<!--	<label for="Answer: "> Username</label>-->
 	<textarea id = "userGuess" cols="40" rows="5" onkeypress="process(event)"></textarea>
 <script type="text/javascript">
+	var guess = "";
 	function process(e) {
 			if (e.keyCode == 13) {
-				alert(document.getElementById("userGuess").value)
-				alert(generateAddition())
+				e.preventDefault();
+				guess = document.getElementById("userGuess").value;
+				//blockList.forEach(getAnswer);
+				for(var i = 0; i < blockList.length; i++){
+					if(getAnswer(blockList[i], i) == true) {
+						break;
+					}	
+				}
+				document.getElementById("userGuess").value = "";
+//				document.getElementById("userGuess").value = document.getElementById("userGuess").defaultValue;
 			} 
+	}
+	function getAnswer(block, iterator) {
+		asArray = block.equation.split(" ");
+		num1 = parseInt(asArray[0]);
+		symbol = asArray[1];
+		num2 = parseInt(asArray[2]);
+		result = -11;
+		if (symbol == "+"){
+			result = num1 + num2;
+			console.log("checkGuess'" + guess+ "'");
+			console.log("result'" + result + "'");
+			if(result == parseInt(guess)) {
+				document.getElementById(block.id).remove();//where im at rnzzzzzzzzzzz
+				blockList.splice(iterator,1);
+				console.log("Block removed from user input:" + block.id);
+				return true;
+			}
+			else{
+				console.log("Didnt find block");
+				return false;
+			}
+		}
+		if (symbol == "-"){
+			result = num1 - num2;
+			if(result == parseInt(guess)) {
+				block.target.remove();
+			}
+		}
 	}
 </script>
 	<!--<div>h1</div> -->

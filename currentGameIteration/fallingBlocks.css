@@ -17,18 +17,21 @@
 		100%{left: -100px;}
 	}
 	@keyframes blockFall1 {
-		0% {left: 20px; top: 10px;}
-		100% {left: 20px; top: 720px;}
+		0% {left: 20px; top: 30px;}
+		100% {left: 20px; top: 715px;}
 	}
 	@keyframes blockFall2 {
-		0% {left: 120px; top: 10px;}
-		100% {left: 120px; top: 720px;}
+		0% {left: 120px; top: 30px;}
+		100% {left: 120px; top: 715px;}
 	}
 	@keyframes blockFall3 {
-		0% {left: 220px; top: 10px;}
-		100% {left: 220px; top: 720px;}
+		0% {left: 220px; top: 30px;}
+		100% {left: 220px; top: 715px;}
 	}
-
+	@keyframes blockFall4 {
+		0% {left: 320px; top: 30px;}
+		100% {left: 320px; top: 715px;}
+	}
 /*
 .fallingBlocks {
     width: 100px;

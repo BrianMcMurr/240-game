@@ -4,7 +4,7 @@
 		width: 100px;
 		height: 100px;
 		position: absolute;
-		background-color: red;
+		background-color: blue;
 		text-align: center;
 		animation-name: normalFall;/* this line was changed it now works with new animation options */
 		animation-duration: 4s;

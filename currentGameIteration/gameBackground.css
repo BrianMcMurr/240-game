@@ -1,7 +1,8 @@
 	.gameBackground {
 		width: 500px;
 		height: 800px;
-		border: 5px solid black;
+		border: 5px solid rgb(0, 255, 0);
 		margin: 0;
-		background-color: green;
+		background-color: black;
+		color: red;
 	}

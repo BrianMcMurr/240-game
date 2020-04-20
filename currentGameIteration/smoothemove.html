@@ -26,7 +26,7 @@
 		}
 		//start shooting blocks every gap millis
 		function start(gap){
-			//The function setInterval calls the method blockCannon every gam milliseconds
+			//The function setInterval calls the method blockCannon every gap milliseconds
 			go = setInterval(blockCannon, gap);
 		}
 
@@ -41,7 +41,7 @@
 			console.log(counter);	
 			var currentBlockId = "block" + counter;
 			var randomEquation = generateAddition();
-			makeBlock(currentBlockId,randomEquation);
+			makeBlock(currentBlockId, randomEquation);
 			var newBlock = {id: currentBlockId, equation: randomEquation};
 			blockList.push(newBlock);
 			console.log(JSON.stringify(blockList));
@@ -59,26 +59,30 @@
 			case (3) : block.setAttribute("style","animation-name: blockFall3"); break;
 			default : block.setAttribute("style","animation-name: blockFall4"); break;
 			}
+			block.setAttribute("color", "blue");
 			document.body.appendChild(block);
 			block.innerHTML = equation;
 
 		}
-
 		function animationEndListener(e) {//when event triggers, removes block from webpage and removes block from blockList
 			removeBlockId = e.target.getAttribute("id");
+			color = e.target.getAttribute("color");
 			for(i = 0; i < blockList.length; i++) {
 				if(removeBlockId == blockList[i].id){
 					blockList.splice(i,1);
 				}
 			}
 			e.target.remove();
-			missedPoints += 10;
+			if(color == "blue") {
+				missedPoints += 10;
+			}
 			updateScore();// updates score counter on webpage
 			checkIfGameFinish();// checks if player has missed maximum number of points
 		}
+		
 		function checkIfGameFinish() {// checks if the user has missed the maximum amount of points,if so ends the game and gives score card as alert
 			if(missedPoints == maxMissedPoints) {
-				for (var i = 0; i < blockList.length; i++) {
+				for (i = 0; i < blockList.length; i++) {
 					document.getElementById(blockList[i].id).remove();
 				}
 				stop();//stops the game 
@@ -111,8 +115,14 @@
 			if (symbol == "+"){//if addition, then solves as additon
 				result = num1 + num2;
 				if(result == parseInt(guess)) {//if user guess is correct then deletes the block and increments and updates score
-					document.getElementById(block.id).remove();
-					blockList.splice(iterator,1);
+					elem = document.getElementById(block.id);
+					animationName = elem.getAttribute("style");
+					console.log("animation name: " + animationName);
+					elem.setAttribute("style", "background-color: green;" + animationName);
+					elem.setAttribute("color", "green");
+					console.log(elem.getAttribute("style"));
+					//elem.style.backgroundColor = green;
+					blockList.splice(iterator, 1); 
 					currentScore += 10;
 					updateScore();
 					return true;
@@ -121,12 +131,14 @@
 					return false;
 				}
 			}
+			/*
 			if (symbol == "-"){// if subtraction
 				result = num1 - num2;
 				if(result == parseInt(guess)) {
 					block.target.remove();
 				}
 			}
+			*/
 		}
 
 

@@ -39,7 +39,7 @@
 		function blockCannon() {
 			++counter;
 			console.log(counter);	
-			var currentBlockId = "block" + counter;
+			var currentBlockId = "block" + counter;  
 			var randomEquation = generateAddition();
 			makeBlock(currentBlockId, randomEquation);
 			var newBlock = {id: currentBlockId, equation: randomEquation};

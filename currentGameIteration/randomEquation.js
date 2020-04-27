@@ -9,14 +9,14 @@
 	function generateSubtraction(){
 		var a = getRandomInt();
 		var b = getRandomInt();
-	//	if (a-b < 0){
-	//		if (b-a >= 0){
-	//			var c = a;
-	//			a = b;
-	//			var b = c;
-	//		}
-	//		else{
-	//			generateSubtraction();
-	//		}
-	//	}
+		if (a-b < 0){ //remove if block for negative answers
+			if (b-a >= 0){
+				var c = a;
+				a = b;
+				var b = c;
+			}
+			else{
+				generateSubtraction();
+			}
+		}
 		return (a + " - " + b) }

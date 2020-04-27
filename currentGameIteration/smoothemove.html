@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-
 <head>
 	<link rel="stylesheet" type="text/css" href="gameBackground.css">
 	<link rel="stylesheet" type="text/css" href="fallingBlocks.css">
@@ -10,14 +9,28 @@
 <body>
 	<script src="randomEquation.js"></script>
 	<script type="text/javascript">
-		
+	   //var selectedSong = '<%= Session["selectedSong"] %>';
+		var blockFrequency;// rate of block creation, lower = more blocks
+		var selectedSong = "shiningOnMyEx";
+		/*
+		switch(selectedSong) {
+			case("shiningOnMyEx") : 
+			blockFrequency = 1000; 
+			var audio = new Audio('bbno_-_Shining_On_My_Ex_ft_Yung_Gravy_Hit64.com.mp3');
+			//audio.addEventListener("ended", stop());
+			audio.play();
+			break;
+			default : blockFrequency = 3000; 
+			break;
+		}
+		*/
 		var go; //this variable will hold the interval for blockCannon. Initialized in start(gap).
 		var counter = 0;
 		var blockList = new Array(); //whats 9 + 10?
-		var blockFrequency = 1000;
 		var currentScore = 0;
 		var missedPoints = 0;
 		var maxMissedPoints = 100;
+	//	var listOfMissedEq = new Array();
 		start(blockFrequency);
 		updateScore();
 
@@ -39,7 +52,12 @@
 		function blockCannon() {
 			++counter;
 			console.log(counter);	
-			var currentBlockId = "block" + counter;  
+			var currentBlockId = "block" + counter;
+			/*
+			var wunOrToo = ( Math.floor(Math.random() * Math.floor(2)) )+1;
+			if (wunOrToo == 1) randomEquation = generateSubtraction();
+			else var randomEquation = generateAddition();
+			*/  
 			var randomEquation = generateAddition();
 			makeBlock(currentBlockId, randomEquation);
 			var newBlock = {id: currentBlockId, equation: randomEquation};
@@ -130,10 +148,22 @@
 				}
 			}
 			/*
-			if (symbol == "-"){// if subtraction
+			if (symbol == "-"){
 				result = num1 - num2;
 				if(result == parseInt(guess)) {
-					block.target.remove();
+					elem = document.getElementById(block.id);
+					animationName = elem.getAttribute("style");
+					console.log("animation name: " + animationName);
+					elem.setAttribute("style", "background-color: green;" + animationName);
+					elem.setAttribute("color", "green");//saves color attribute of block as green if correct
+					//elem.style.backgroundColor = green;
+					blockList.splice(iterator, 1); 
+					currentScore += 10;
+					updateScore();
+					return true;
+				}
+				else{
+					return false;
 				}
 			}
 			*/

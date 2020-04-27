@@ -16,7 +16,11 @@ $re = checkLogin($username, $password);
 
 if($re===1){
 	/*Redirect browser*/
-	header("Location: homepage.html");
+	session_start();
+	$_SESSION["currentUser"] = $username;
+	$_SESSION["additionOrSubtraction"];
+	$_SESSION["selectedSong"];
+	header("Location: homepage.html"); 
 
 }else{
 	echo "Invaild username or password";

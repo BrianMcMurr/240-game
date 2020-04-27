@@ -7,3 +7,6 @@ return Math.floor(Math.random() * (max - min+1)) + min;
 function generateAddition(){ 
 	return (getRandomInt()) + " + " + (getRandomInt()) ;
 }
+
+function generateSubtraction(){
+	return (getRandomInt()) + " - " + (getRandomInt()) ;}

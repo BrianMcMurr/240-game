@@ -16,6 +16,8 @@ $re = checkLogin($username, $password);
 
 if($re===1){
 	/*Redirect browser*/
+	session_start(); 
+    $_SESSION['$username'] = $username;
 	header("Location: menu.php/");
 
 }else{

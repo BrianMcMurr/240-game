@@ -11,20 +11,22 @@
 	<script type="text/javascript">
 	   //var selectedSong = '<%= Session["selectedSong"] %>';
 		var blockFrequency;// rate of block creation, lower = more blocks
-		var selectedSong = "shiningOnMyEx";
+		var sound = new Audio('bbno_-_Shining_On_My_Ex_ft_Yung_Gravy_Hit64.com.mp3')
+		document.body.appendChild(sound);
+		sound.play();
 		/*
 		switch(selectedSong) {
 			case("shiningOnMyEx") : 
 			blockFrequency = 1000; 
-			var audio = new Audio('bbno_-_Shining_On_My_Ex_ft_Yung_Gravy_Hit64.com.mp3');
 			//audio.addEventListener("ended", stop());
 			audio.play();
 			break;
 			default : blockFrequency = 3000; 
 			break;
 		}
-		*/
+	*/
 		var go; //this variable will hold the interval for blockCannon. Initialized in start(gap).
+		var blockFrequency = 1000;
 		var counter = 0;
 		var blockList = new Array(); //whats 9 + 10?
 		var currentScore = 0;

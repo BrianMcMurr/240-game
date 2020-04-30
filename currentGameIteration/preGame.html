@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<style type="text/css">
+					body{
+						font-family: Monaco; /* change everything after sans to change font */
+					}    
+			</style>
+			<body>
+				<fieldset>
+			
+				<legend>Please Pick Game Mode</legend>
+				
+					<input onclick = "addSub(0)" type = "image" id = "sArt" src = "add.png">
+					
+					<input onclick = "addSub(1)" type = "image" id="aArt" src="sub.png">  
+
+					<button onclick = "songSelection('shiningOnMyEx')">Shining On Your Ex by bbno and Yung Gravy</button>
+				</fieldset>
+				<script>
+					function addSub(value) {
+						if(value == 0) {
+							//session variable to additon
+						} else {
+							//session variable to subtraction
+						}
+					}
+					function songSelection(song) {
+						switch(song) {
+							case("shiningOnMyEx") :	//session variable of song to shining on your ex;
+							'<%Session["selectedSong"] = "' + song + '"; %>';
+							break;
+							default: //something else;
+							break;
+							}
+						}
+					function start() {
+						if
+					}
+				</script>
+	</body>
+</html>

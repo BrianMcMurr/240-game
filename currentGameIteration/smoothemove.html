@@ -4,16 +4,28 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="gameBackground.css">
 	<link rel="stylesheet" type="text/css" href="fallingBlocks.css">
+	<button id= "startGameButton" type="button" onclick="start(1000); makeSound();document.getElementById('startGameButton').remove();">Click me to start game</button>
 	<div id = "background" class="gameBackground"></div>
 </head>
 <body>
+
 	<script src="randomEquation.js"></script>
 	<script type="text/javascript">
-	   //var selectedSong = '<%= Session["selectedSong"] %>';
-		var blockFrequency;// rate of block creation, lower = more blocks
-		var sound = new Audio('bbno_-_Shining_On_My_Ex_ft_Yung_Gravy_Hit64.com.mp3')
-		document.body.appendChild(sound);
-		sound.play();
+	   //var selectedSong = '<%= Session["selectedSong"] %>';// rate of block creation, lower = more blocks
+		function makeSound(selectedSong) {	
+			var sound;	
+			switch(selectedSong) {
+				case("shiningOnMyEx"):
+				sound = new Audio('bbno_-_Shining_On_My_Ex_ft_Yung_Gravy_Hit64.com.mp3');
+				break;
+				default:
+				sound = new Audio('bbno_-_Shining_On_My_Ex_ft_Yung_Gravy_Hit64.com.mp3');
+				break;
+			}
+			sound.id = "playingSong";
+			document.body.appendChild(sound);
+			sound.play();
+		}
 		/*
 		switch(selectedSong) {
 			case("shiningOnMyEx") : 
@@ -33,9 +45,9 @@
 		var missedPoints = 0;
 		var maxMissedPoints = 100;
 	//	var listOfMissedEq = new Array();
-		start(blockFrequency);
+	//	start(blockFrequency);
 		updateScore();
-
+		console.log(document.getElementById("").duration);
 		function updateScore() {
 			document.getElementById("background").innerHTML = "Your current score is " + currentScore + "\n You've missed " + missedPoints + " points so far";
 		}
@@ -48,6 +60,7 @@
 		//stop shooting blocks every gap millis
 		function stop(){
 			clearInterval(go);
+			document.getElementById("playingSong").pause();
 		}
 
 		//Shoot blocks with random equations in random collumns/files.
@@ -139,7 +152,6 @@
 					console.log("animation name: " + animationName);
 					elem.setAttribute("style", "background-color: green;" + animationName);
 					elem.setAttribute("color", "green");//saves color attribute of block as green if correct
-					//elem.style.backgroundColor = green;
 					blockList.splice(iterator, 1); 
 					currentScore += 10;
 					updateScore();
@@ -149,7 +161,6 @@
 					return false;
 				}
 			}
-			/*
 			if (symbol == "-"){
 				result = num1 - num2;
 				if(result == parseInt(guess)) {
@@ -158,7 +169,6 @@
 					console.log("animation name: " + animationName);
 					elem.setAttribute("style", "background-color: green;" + animationName);
 					elem.setAttribute("color", "green");//saves color attribute of block as green if correct
-					//elem.style.backgroundColor = green;
 					blockList.splice(iterator, 1); 
 					currentScore += 10;
 					updateScore();
@@ -168,7 +178,6 @@
 					return false;
 				}
 			}
-			*/
 		}
 
 

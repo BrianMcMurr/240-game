@@ -18,9 +18,9 @@ if($re===1){
 	/*Redirect browser*/
 	session_start();
 	$_SESSION["currentUser"] = $username;
-	$_SESSION["additionOrSubtraction"];
-	$_SESSION["selectedSong"];
-	header("Location: homepage.html"); 
+	$_SESSION["additionOrSubtraction"] = 0;
+	$_SESSION["selectedSong"] = "";
+	header("Location: preGame.html"); 
 
 }else{
 	echo "Invaild username or password";

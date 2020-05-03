@@ -11,36 +11,45 @@
 					}    
 			</style>
 			<body>
+			<form action="smoothemove.php" method="post" id="form_id">	
 				<fieldset>
-			
-				<legend>Please Pick Game Mode</legend>
 				
-					<input onclick = "addSub(0)" type = "image" id = "sArt" src = "add.png">
+				<legend>Please Pick Game Mode</legend>
+					<input type="hidden" name="gameType" id = "gameType">
+					<input type="hidden" name="songType" id = "songType">
+					<img onclick = "setGameType(0)" type = "image" id = "sArt" src = "add.png">
 					
-					<input onclick = "addSub(1)" type = "image" id="aArt" src="sub.png">  
+					<img onclick = "setGameType(1)" type = "image" id="aArt" src="sub.png">  
 
 					<button onclick = "songSelection('shiningOnMyEx')">Shining On Your Ex by bbno and Yung Gravy</button>
+					<input type="submit" name="submit_id" id="start" value="start game"/>
 				</fieldset>
+			</form>
 				<script>
-					function addSub(value) {
+					function setGameType(value) {
 						if(value == 0) {
-							//session variable to additon
-						} else {
+							//session variable to additon   <form action="check_login.php" method="post" id="form_id">
+							document.getElementById("gameType").value = "addition";
+						}
+						else if(value == 1) {
+							document.getElementById("gameType").value = "subtraction";
 							//session variable to subtraction
 						}
 					}
 					function songSelection(song) {
 						switch(song) {
 							case("shiningOnMyEx") :	//session variable of song to shining on your ex;
-							'<%Session["selectedSong"] = "' + song + '"; %>';
+							//'<%Session["selectedSong"] = "' + song + '"; %>';
 							break;
 							default: //something else;
 							break;
 							}
 						}
+						/*
 					function start() {
 						if
 					}
+				*/
 				</script>
 	</body>
 </html>

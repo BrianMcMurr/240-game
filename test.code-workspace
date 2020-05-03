@@ -1,0 +1,21 @@
+{
+    "folders": [
+		{
+			"name": "currentGameIteration",
+			"uri": "vsls:/"
+		}
+	],
+    "settings": {
+        "vsliveshare.join.reload.workspaceId": "152571444CE1EC666B6B75AF70593F9A4A6A",
+        "vsliveshare.join.reload.workspaceFolder": "C:\\Users\\jbjk\\AppData\\Local\\Temp\\vsliveshare\\tmp-152571444CE1EC666B6B75AF70593F9A4A6A",
+        "files.hotExit": "off",
+        "extensions.ignoreRecommendations": true,
+        "typescript.tsc.autoDetect": "off",
+        "jake.autoDetect": "off",
+        "grunt.autoDetect": "off",
+        "gulp.autoDetect": "off",
+        "npm.autoDetect": "off",
+        "debug.allowBreakpointsEverywhere": true,
+        "html.autoClosingTags": false
+    }
+}
